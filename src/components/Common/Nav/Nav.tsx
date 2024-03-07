@@ -1,13 +1,21 @@
 import { NavLink } from "react-router-dom"
-import styles from "./Nav.module.scss";
+import moduleStyles from "./Nav.module.scss";
 
 type NavProps = {
     isActive: boolean;
 }
 
-const Nav = () => {
+interface IProps {
+    styles?: {
+        [key: string]: string;
+    }
+}
+
+const Nav = (props: IProps) => {
+    const { styles = moduleStyles } = props;
+
     const activeClassname = `${styles.link} ${styles.active}`;
-    const checkNavStatus = (props: NavProps) => props.isActive ? activeClassname : styles.link;
+    const checkNavStatus = (status: NavProps) => status.isActive ? activeClassname : styles.link;
 
     return (
         <nav className={styles.navigation}>
