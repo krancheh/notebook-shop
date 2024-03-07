@@ -1,0 +1,85 @@
+@use 'src/index';
+
+.sidebar {
+    height: 100dvh;
+    display: flex;
+
+    z-index: 1000;
+
+    position: fixed;
+    left: 0;
+
+    transition: .3s;
+    transform: translateX(-100%);
+    opacity: 0;
+
+    .sidebarContent {
+        height: 100%;
+        padding: 20px;
+        width: 80vw;
+
+        background-color: rgba(244, 244, 244, 0.96);
+        backdrop-filter: blur(2px);
+        border-right: 1px solid #e0e0e0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .closeArea {
+        height: 100%;
+        width: 20vw;
+    }
+
+    .sidebarHead {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .navigation {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1 0 auto;
+
+        .link {
+            position: relative;
+            font-size: 18px;
+            color: index.$common-grey;
+            white-space: nowrap;
+        }
+
+        .link:hover {
+            color: index.$common-black;
+        }
+
+        .link.active {
+            color: index.$common-black;
+            opacity: 1;
+        }
+
+        .link.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -5px;
+            width: 2px;
+            height: 100%;
+            background-color: index.$base-color;
+        }
+    }
+}
+
+.show {
+    transform: translateX(0);
+    opacity: 1;
+}
