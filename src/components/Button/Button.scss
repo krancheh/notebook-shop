@@ -1,0 +1,44 @@
+@use "src/index";
+
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+
+  text-align: center;
+
+  border-radius: 8px;
+  border: none;
+  opacity: .9;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
+}
+
+.button:disabled {
+  opacity: .5;
+}
+
+.button:hover:enabled {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.default {
+  background-color: #f6f6f6;
+  color: index.$common-black;
+}
+
+.text {
+  background: none;
+}
+
+.main {
+  background-color: index.$base-color;
+  color: #fff;
+}
+
+.link {
+  color: index.$common-black;
+}
+

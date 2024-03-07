@@ -1,0 +1,78 @@
+@use "src/index";
+
+.header {
+    width: 100%;
+    padding: 16px 0;
+    z-index: 999;
+
+    position: fixed;
+
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(2px);
+
+    .headerContent {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: 1080px) {
+            justify-content: center;
+        }
+
+        .menuButton {
+            display: none;
+            position: absolute;
+            left: 10px;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+
+            @media (max-width: 1080px) {
+                display: flex;
+            }
+        }
+
+        .navigation {
+            margin: 0 20px;
+            display: flex;
+            gap: 40px;
+
+            @media (max-width: 1080px) {
+                display: none;
+            }
+
+            .link {
+                position: relative;
+                color: index.$common-grey;
+                white-space: nowrap;
+
+                &:hover {
+                    color: index.$common-black;
+                }
+
+                &.active {
+                    color: index.$common-black;
+                    opacity: 1;
+                }
+
+                &.active::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: index.$base-color;
+                }
+            }
+
+        }
+
+        .mini-profile {
+            @media (max-width: 1080px) {
+                display: none;
+            }
+        }
+    }
+}
