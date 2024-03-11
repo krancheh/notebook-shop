@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from "react-router-dom";
-import Button from "../Button/Button";
+import { useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import SidebarIcon from "../../assets/icons/sidebar-icon.svg";
+import Button from "../Common/Button/Button";
 // import MiniProfile from "../MiniProfile/MiniProfile";
-import styles from "./Sidebar.module.scss";
-import Nav from '../Common/Nav/Nav';
 import Logo from '../Common/Logo/Logo';
+import Nav from '../Common/Nav/Nav';
+import styles from "./Sidebar.module.scss";
 
 interface IProps {
     isOpen: boolean;

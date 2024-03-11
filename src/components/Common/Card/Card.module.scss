@@ -1,0 +1,6 @@
+@use "src/index";
+
+.card {
+    padding: 15px;
+    box-shadow: index.$shadow;
+}

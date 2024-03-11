@@ -2,10 +2,12 @@
 $base-color: #708EF8;
 $common-black: #101913;
 $common-grey: #535A56;
+$shadow: 0 1px 2px 0 #00000029;
 
 
-#root {
-  overflow-x: hidden;
+
+b {
+  font-weight: bold;
 }
 
 * {
@@ -21,9 +23,14 @@ $common-grey: #535A56;
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding-top: 80px;
 }
 
 a {
@@ -78,7 +85,9 @@ h3 {
 }
 
 
-
+svg {
+  color: $base-color;
+}
 
 
 
