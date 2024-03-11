@@ -1,0 +1,111 @@
+@use "/src/index.scss";
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    section {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        transform: translateY(-80px);
+
+        @media screen and (max-width: 1080px) {
+            flex-direction: column;
+            transform: none;
+        }
+
+        h1>span {
+            font-size: inherit;
+            font-weight: inherit;
+            color: index.$base-color;
+        }
+
+        .heroLeft {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+
+            a {
+                align-self: start;
+            }
+        }
+
+        .heroRight {
+            position: relative;
+            min-width: 50%;
+
+            @media screen and (max-width: 1080px) {
+                min-width: none;
+            }
+
+            svg {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+
+
+
+    // ADVANTAGES SECTION
+    .advantages {
+        padding: 200px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .advContent {
+            h2 {
+                margin-bottom: 60px;
+
+                span {
+                    font-size: inherit;
+                    font-weight: inherit;
+                    color: index.$base-color;
+                }
+            }
+
+            .items {
+                display: flex;
+                gap: 100px;
+
+                @media (max-width: 1080px) {
+                    flex-direction: column;
+                }
+
+                h3 {
+                    font-size: 20px;
+
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
