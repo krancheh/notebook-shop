@@ -14,7 +14,9 @@ const Layout = () => {
         <div>
             <Sidebar isOpen={isSidebarOpen} handleSidebar={handleSidebar} />
             <Header handleSidebar={handleSidebar} />
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
         </div>
     )
 }
