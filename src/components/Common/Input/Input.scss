@@ -1,0 +1,77 @@
+@use "src/index";
+
+$red: #ff7a7a;
+
+.input {
+  position: relative;
+
+  .label {
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    color: #777777;
+    pointer-events: none;
+    transition: transform .2s;
+
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
+  }
+  .required::after {
+    content: "*";
+    color: $red;
+  }
+
+  .error-message {
+    display: block;
+    margin-left: 10px;
+    font-size: 12px;
+    color: $red;
+  }
+
+  .active {
+    color: index.$common-grey;
+
+    pointer-events: auto;
+    transform: translate(-10px, -35px);
+    -webkit-animation: opacityAnim .3s linear;
+    -o-animation: opacityAnim .3s linear;
+    animation: opacityAnim .3s linear;
+  }
+
+  .input-element {
+    padding: 10px 14px;
+    width: 100%;
+    background-color: #fcfcfc;
+    border-radius: 5px;
+    border: 1px solid #BBB;
+
+    @media (max-width: 500px) {
+      padding: 9px 14px;
+    }
+
+  }::placeholder {
+     color: #b0b0b0;
+       @media (max-width: 500px) {
+         font-size: 14px;
+       }
+   }
+
+  textarea.input-element {
+    resize: vertical;
+  }
+  .error {
+    border: 1px solid $red;
+  }
+}
+
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
