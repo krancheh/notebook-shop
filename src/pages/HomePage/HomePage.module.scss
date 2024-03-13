@@ -7,13 +7,15 @@
     justify-content: center;
 
     section {
-        min-height: calc(100vh - 80px);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
+
+    // HERO SECTION
     .hero {
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,7 +24,9 @@
         transform: translateY(-80px);
 
         @media screen and (max-width: 1080px) {
-            flex-direction: column;
+            min-height: calc(100vh - 80px);
+            flex-direction: column-reverse;
+            justify-content: flex-end;
             transform: none;
         }
 
@@ -38,6 +42,20 @@
             justify-content: center;
             gap: 30px;
 
+            animation: toRight 1.5s ease;
+
+            @keyframes toRight {
+                0% {
+                    transform: translateX(-100vw);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translateX(0%);
+                    opacity: 1;
+                }
+            }
+
             a {
                 align-self: start;
             }
@@ -46,6 +64,20 @@
         .heroRight {
             position: relative;
             min-width: 50%;
+
+            animation: toLeft 1.5s ease;
+
+            @keyframes toLeft {
+                0% {
+                    transform: translateX(100vw);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translateX(0%);
+                    opacity: 1;
+                }
+            }
 
             @media screen and (max-width: 1080px) {
                 min-width: none;
@@ -71,7 +103,7 @@
 
     // ADVANTAGES SECTION
     .advantages {
-        padding: 200px 0;
+        margin: 50px 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -98,11 +130,76 @@
 
                 h3 {
                     font-size: 20px;
-
+                    margin-bottom: 10px;
                 }
 
                 p {
                     font-size: 14px;
+                }
+            }
+        }
+    }
+
+
+    // QUESTIONS SECTION
+    .questions {
+        min-height: 100vh;
+        position: relative;
+
+        background: {
+            size: contain;
+            image: url("../../assets/images/notebook-landing.png");
+            repeat: no-repeat;
+            position: center;
+        }
+
+        @media (max-width: 980px) {
+            margin: 180px 0;
+            min-height: 80vh;
+            background-size: cover;
+        }
+
+        .questionsContent {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+            @media (max-width: 1080px) {
+                justify-content: center;
+            }
+
+            form {
+                max-width: 350px;
+                display: flex;
+                flex-direction: column;
+                gap: 28px;
+
+                textarea {
+                    min-height: 100px;
+                    max-height: 160px;
+                }
+            }
+
+            .questionsPicture {
+                width: 40%;
+                position: relative;
+
+                @media (max-width: 1080px) {
+                    display: none;
+                }
+
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                img {
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                 }
             }
         }
