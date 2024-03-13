@@ -1,0 +1,199 @@
+@use 'src/index';
+
+
+.auth-page {
+  min-height: 100vh;
+  background-color: #F4F4F4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    min-height: calc(100vh - 80px);
+    padding-top: 0;
+  }
+
+  .auth-content {
+    //position: relative;
+    display: flex;
+    min-height: 530px;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+
+      @media (max-width: 500px) {
+        min-height: auto;
+      }
+    }
+
+    .left-side {
+      position: relative;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+
+      background: linear-gradient(45deg, #7eecc9, index.$base-color, #14966c, #44d7a7);
+      -webkit-animation: rotateGradient 5s linear infinite;
+      -o-animation: rotateGradient 5s linear infinite;
+      animation: rotateGradient 5s linear infinite;
+      border-bottom-left-radius: inherit;
+      border-top-left-radius: inherit;
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+
+      @keyframes toRight {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      h2 {
+        color: #fff;
+        animation: toRight .4s ease;
+      }
+
+      svg {
+        width: 351px;
+        height: 173px;
+      }
+
+      img {
+        position: absolute;
+        height: 345px;
+        top: 20%;
+        left: 25%;
+        animation: toRight .4s ease;
+      }
+    }
+
+    .auth-form {
+      position: relative;
+      width: 500px;
+      padding: 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+
+      @media (max-width: 900px) {
+        width: 100%;
+        gap: 30px;
+        padding: 20px;
+
+        @media (max-width: 500px) {
+          padding: 20px 15px;
+        }
+      }
+
+      @keyframes toLeft {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      h2 {
+        color: index.$base-color;
+        margin-bottom: 15px;
+        animation: toLeft .4s ease;
+      }
+
+      .name-inputs {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+      }
+
+      .checkbox {
+        margin: -15px 0 5px;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+
+        align-self: flex-start;
+      }
+
+      .input {
+        width: 100%;
+      }
+
+      .form-error-message {
+        padding: 7px;
+        margin: -20px 0;
+
+        color: #ff7a7a;
+        border-radius: 5px;
+        border: 1px solid #ff7a7a;
+        background-color: #ffeeee;
+
+        text-align: center;
+
+        -webkit-animation: onError .5s ease;
+        -o-animation: onError .5s ease;
+        animation: onError .3s ease;
+
+        @keyframes onError {
+          0% {
+            transform: translateX(0);
+          }
+
+          20% {
+            transform: translateX(-5px);
+          }
+
+          40% {
+            transform: translateX(5px);
+          }
+
+          60% {
+            transform: translateX(-5px);
+          }
+
+          80% {
+            transform: translateX(5px);
+          }
+
+          100% {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+@keyframes rotateGradient {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    filter: hue-rotate(10deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
