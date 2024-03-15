@@ -3,7 +3,7 @@ import { createApiFromPath } from "../api"
 
 
 
-export default class Basket {
+export default class BasketService {
     private static api = createApiFromPath("/basket");
 
     static getBasket = async () => {

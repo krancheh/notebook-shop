@@ -1,4 +1,4 @@
-import { createApiFromPath } from './../api/index';
+import { createApiFromPath } from '../api/index';
 
 interface GetItemsParams {
     [key: string]: string | number;
@@ -8,7 +8,7 @@ interface GetItemsParams {
     page?: number;
 }
 
-export default class Products {
+export default class ProductsService {
     private static api = createApiFromPath("/items");
 
     static getProducts = async (params: GetItemsParams) => {

@@ -4,7 +4,7 @@ import { LoginUserData, SignupUserData } from "../types";
 
 
 
-export default class User {
+export default class UserService {
     private static api = createApiFromPath("/users");
 
     static signup = async (data: SignupUserData) => {
