@@ -1,0 +1,37 @@
+.searchInput {
+    position: relative;
+
+    input {
+        padding-right: 20px;
+
+        border: none;
+        outline: none;
+
+        width: 100%;
+        font-size: 18px;
+
+        @media (max-width: 800px) {
+            font-size: 15px;
+        }
+
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+
+        pointer-events: none;
+
+        position: absolute;
+        right: 0;
+        top: 50%;
+
+        transform: translateY(-50%);
+        color: #868686;
+
+        @media (max-width: 800px) {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
