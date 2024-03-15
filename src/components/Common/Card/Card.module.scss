@@ -3,4 +3,11 @@
 .card {
     padding: 15px;
     box-shadow: index.$shadow;
+    border-radius: index.$base-border-radius;
+
+    background-color: #fff;
+
+    @media (max-width: 800px) {
+        padding: 10px;
+    }
 }
