@@ -1,0 +1,13 @@
+@use "/src/index.scss";
+
+.tag {
+    padding: 5px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+
+    border-radius: index.$base-border-radius;
+
+    @media (max-width: 800px) {
+        font-size: 12px;
+    }
+}
