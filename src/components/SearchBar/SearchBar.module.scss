@@ -1,9 +1,13 @@
-.searchInput {
+.searchBar {
+    padding: 0;
+    grid-area: searchbar;
     position: relative;
 
-    input {
-        padding-right: 20px;
 
+    input {
+        padding: 10px 40px 10px 15px;
+
+        border-radius: inherit;
         border: none;
         outline: none;
 
@@ -11,6 +15,7 @@
         font-size: 18px;
 
         @media (max-width: 800px) {
+            padding: 10px 25px 10px 10px;
             font-size: 15px;
         }
 
@@ -23,13 +28,14 @@
         pointer-events: none;
 
         position: absolute;
-        right: 0;
+        right: 20px;
         top: 50%;
 
         transform: translateY(-50%);
         color: #868686;
 
         @media (max-width: 800px) {
+            right: 10px;
             width: 15px;
             height: 15px;
         }

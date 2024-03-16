@@ -4,11 +4,9 @@ import SearchIcon from "../../assets/icons/search-icon.svg";
 
 const SearchBar = () => {
     return (
-        <Card>
-            <div className={styles.searchInput}>
-                <input type="search" placeholder="Поиск товаров" />
-                <SearchIcon className={styles.icon} />
-            </div>
+        <Card className={styles.searchBar}>
+            <input type="search" placeholder="Поиск товаров" />
+            <SearchIcon className={styles.icon} />
         </Card>
     )
 }
