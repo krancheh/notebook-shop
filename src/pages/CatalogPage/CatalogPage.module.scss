@@ -1,0 +1,34 @@
+.catalog {
+    margin-top: 20px;
+
+    .title {
+        p {
+            margin-top: 5px;
+        }
+    }
+
+    .content {
+        margin-top: 15px;
+
+        display: grid;
+        gap: 15px;
+        grid-template-columns: minmax(auto, 280px) auto 100px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "searchbar searchbar ."
+            "filter list list"
+        ;
+
+        @media (max-width: 1000px) {
+            grid-template-areas:
+                "searchbar searchbar ."
+                "filter filter filter"
+                "list list list"
+            ;
+        }
+
+        .filter {
+            grid-area: filter;
+        }
+    }
+}
