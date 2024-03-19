@@ -9,18 +9,19 @@ const useGetItems = (params?: GetItemsParams) => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        try {
-            const fetchItems = async () => {
+        const fetchItems = async () => {
+            try {
                 setIsLoading(true);
                 const { data } = await ProductsService.getProducts<{ items: Item[] }>(params);
                 setItems(data.items);
+            } catch (e) {
+                console.log(e);
+            } finally {
+                setIsLoading(false);
             }
-            fetchItems();
-        } catch (e) {
-            console.log(e);
-        } finally {
-            setIsLoading(false);
         }
+        fetchItems();
+
     }, [params])
 
     return { items, isLoading };
