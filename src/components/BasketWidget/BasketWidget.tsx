@@ -7,12 +7,14 @@ import Dropdown from "../Common/Dropdown/Dropdown";
 import BasketItem from "./BasketItem";
 import useGetBasketItems from "../../hooks/useGetBasketItems";
 import useRemoveFromBasket from "../../hooks/useRemoveFromBasket";
+import { useLocation } from "react-router-dom";
 
 
 const BasketWidget = () => {
     const basketItems = useSelector(selectBasketItems);
     useGetBasketItems();
     const { removeFromBasket } = useRemoveFromBasket();
+    const { pathname } = useLocation();
 
 
     const handleClearBasket = () => {
@@ -23,6 +25,8 @@ const BasketWidget = () => {
 
         removeFromBasket(ids);
     }
+
+    if (pathname === "/basket") return null;
 
     return (
         <div className={styles.widget} title="Корзина">
