@@ -1,88 +1,93 @@
 @use "/src/index.scss";
 
-.item {
-    display: grid;
-    gap: 10px;
+.card {
+    width: 100%;
 
-    grid-template: {
-        columns: 180px auto 150px;
-        rows: auto 60px 50px;
-        areas:
-            "img title price"
-            "img tags price"
-            "img . price"
-        ;
-    }
+    .item {
+        width: 100%;
+        display: grid;
+        gap: 10px;
 
-
-    @media (max-width: 800px) {
         grid-template: {
-            columns: 120px auto;
-            rows: auto 45px auto;
+            columns: 180px auto 150px;
+            rows: auto 60px 50px;
             areas:
-                "img title"
-                "tags tags"
-                "price price"
+                "img title price"
+                "img tags price"
+                "img . price"
             ;
         }
-    }
 
-    .picture {
-        width: 100%;
-        grid-area: img;
 
         @media (max-width: 800px) {
-            height: auto;
-            width: 100%;
-        }
-
-        img {
-            width: inherit;
-        }
-    }
-
-    .title {
-        font-size: 16px;
-
-        @media (max-width: 800px) {
-            font-size: 15px;
-        }
-    }
-
-    .tags {
-        padding: 7px 0;
-        display: flex;
-        overflow: auto;
-        gap: 5px;
-        align-items: flex-start;
-
-        grid-area: tags;
-    }
-
-    .price {
-        text-align: right;
-
-        grid-area: price;
-
-        p {
-            font-size: 24px;
-            font-weight: 600;
-            color: index.$common-black;
-            flex-grow: 1;
-
-            @media (max-width: 800px) {
-                font-size: 20px;
-                font-weight: 600;
+            grid-template: {
+                columns: 120px auto;
+                rows: auto 45px auto;
+                areas:
+                    "img title"
+                    "tags tags"
+                    "price price"
+                ;
             }
         }
 
-        @media (max-width: 800px) {
-            display: flex;
-            align-items: center;
-            text-align: left;
+        .picture {
+            width: 100%;
+            grid-area: img;
 
-            button {
-                width: 50%;
+            @media (max-width: 800px) {
+                height: auto;
+                width: 100%;
+            }
+
+            img {
+                width: inherit;
+            }
+        }
+
+        .title {
+            font-size: 16px;
+
+            @media (max-width: 800px) {
+                font-size: 15px;
+            }
+        }
+
+        .tags {
+            padding: 7px 0;
+            display: flex;
+            overflow: auto;
+            gap: 5px;
+            align-items: flex-start;
+
+            grid-area: tags;
+        }
+
+        .price {
+            text-align: right;
+
+            grid-area: price;
+
+            p {
+                font-size: 24px;
+                font-weight: 600;
+                color: index.$common-black;
+                flex-grow: 1;
+
+                @media (max-width: 800px) {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+            }
+
+            @media (max-width: 800px) {
+                display: flex;
+                align-items: center;
+                text-align: left;
+
+                button {
+                    width: 50%;
+                }
             }
         }
     }

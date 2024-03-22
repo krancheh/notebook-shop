@@ -7,6 +7,7 @@ import UserService from "./services/UserService";
 import ItemPage from "./pages/ItemPage/ItemPage";
 import { useAppDispatch } from "./store";
 import { setUser } from "./store/userSlice";
+import BasketPage from "./pages/BasketPage/BasketPage";
 
 
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/" element={<Layout />} loader={privateLoader}>
             <Route index element={<HomePage />} />
             <Route path="catalog" element={<CatalogPage />} />
+            <Route path="basket" element={<BasketPage />} />
             <Route path="catalog/:id" element={<ItemPage />} />
             <Route path="login" element={<AuthPage />} />
             <Route path="signup" element={<AuthPage />} />

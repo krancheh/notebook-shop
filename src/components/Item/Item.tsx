@@ -21,7 +21,7 @@ const Item = (props: IProps) => {
     const { addToBasket, isLoading } = useAddToBasket();
 
     return (
-        <Card>
+        <Card className={styles.card}>
             <div className={styles.item}>
                 <Link className={styles.picture} to={link}>
                     <img src={`${process.env.URL}/${item.img}`} alt="product image" />
@@ -31,7 +31,7 @@ const Item = (props: IProps) => {
                     <p>{formattedPrice} ₽</p>
                     {
                         basketItems.some(basketItem => basketItem.id === item.id)
-                            ? <Button path="/basket">В корзину</Button>
+                            ? <Button path="/basket">В корзине</Button>
                             : <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
                     }
 

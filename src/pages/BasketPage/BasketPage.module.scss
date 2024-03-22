@@ -1,0 +1,33 @@
+.content {
+    margin-top: 20px;
+
+    .basket {
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .item {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+
+            .count {
+                text-align: center;
+
+                button {
+                    display: block;
+                }
+
+                .addItemButton {}
+
+                .removeItemButton {
+                    transform: rotateZ(180deg)
+                }
+            }
+
+
+        }
+    }
+}

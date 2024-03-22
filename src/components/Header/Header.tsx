@@ -4,7 +4,6 @@ import styles from "./Header.module.scss";
 import Nav from '../Common/Nav/Nav';
 import Logo from "../Common/Logo/Logo";
 import UserProfileDropdown from "../UserProfileDropdown.tsx/UserProfileDropdown";
-import { useState } from "react";
 import BasketWidget from "../BasketWidget/BasketWidget";
 
 interface IProps {
