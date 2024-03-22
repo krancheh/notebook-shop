@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store";
-import { addBasketItem, selectBasketItems } from "../store/basketSlice";
+import { addBasketItem } from "../store/basketSlice";
 import { selectAuthStatus } from "../store/userSlice";
 import BasketService from "../services/BasketService";
-import { BasketItemCounted, Item } from "../types";
+import { Item } from "../types";
 import { useState } from "react";
 
 const useAddToBasket = () => {
