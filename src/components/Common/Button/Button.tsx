@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { Link } from "react-router-dom";
 import './Button.scss'
+import Loading from "../../../assets/icons/loading-icon.svg";
 
-type TProps = {
+interface IProps {
     className?: string;
     children?: React.ReactNode;
     readonly type?: "default" | "main" | "text";
@@ -10,9 +11,11 @@ type TProps = {
     onClick?: () => void;
     disabled?: boolean;
     submit?: boolean;
+    isLoading?: boolean;
 }
 
-const Button: React.FC<TProps> = ({ className, children, type = "default", onClick, path, submit = false, disabled = false }) => {
+const Button = (props: IProps) => {
+    const { className, children, type = "default", onClick, path, submit = false, disabled = false, isLoading = false } = props;
 
     if (path) {
         return (
@@ -21,7 +24,14 @@ const Button: React.FC<TProps> = ({ className, children, type = "default", onCli
     }
 
     return (
-        <button type={submit ? "submit" : "button"} className={`button ${type} ${className}`} onClick={onClick} disabled={disabled}>{children}</button>
+        <button
+            type={submit ? "submit" : "button"}
+            className={`button ${type} ${className}`}
+            onClick={onClick}
+            disabled={disabled || isLoading}
+        >
+            {isLoading && <Loading className='loading' />}{children}
+        </button>
     )
 };
 

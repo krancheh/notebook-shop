@@ -1,6 +1,7 @@
+import { AxiosResponse } from 'axios';
 import { createApiFromPath } from '../api/index';
 
-interface GetItemsParams {
+export interface GetItemsParams {
     [key: string]: string | number;
     brandId?: number;
     typeId?: number;
@@ -11,7 +12,11 @@ interface GetItemsParams {
 export default class ProductsService {
     private static api = createApiFromPath("/items");
 
-    static getProducts = async (params: GetItemsParams) => {
+    static getProducts = async <T>(params: GetItemsParams): Promise<AxiosResponse<T>> => {
         return this.api.get("/get", params);
+    }
+
+    static getProduct = async <T>(id: number): Promise<AxiosResponse<T>> => {
+        return this.api.get(`/${id}`);
     }
 }

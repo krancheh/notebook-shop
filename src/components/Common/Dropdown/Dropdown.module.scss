@@ -1,0 +1,15 @@
+@use "/src/index.scss";
+
+.menu {
+    padding: 10px;
+
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 999;
+
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    border-radius: index.$base-border-radius;
+    box-shadow: index.$shadow;
+}

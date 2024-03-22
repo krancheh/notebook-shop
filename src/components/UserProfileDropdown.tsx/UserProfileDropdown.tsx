@@ -1,22 +1,22 @@
-import { useState } from "react"
-import Button from "../Common/Button/Button"
+import { useAppSelector } from "../../store";
+import { selectUser } from "../../store/userSlice";
+import Button from "../Common/Button/Button";
 import withLoading from "../Common/WithLoading/WithLoading";
+import styles from "./UserProfileDropdown.module.scss";
 
-interface IProps {
-    user: string
-}
 
-const UserProfileDropdown = withLoading<IProps>(({ user }) => {
-    // const [user, setUser] = useState(null);
+const UserWidget = () => {
+    const name = useAppSelector(selectUser);
 
     return (
-        user
-            ? <div>User</div>
-            : <div>
+        name
+            ? <div>{name}</div>
+            : <div className={styles.links}>
                 <Button type="default" path="/login">Войти</Button>
                 <Button type="main" path="/signup">Регистрация</Button>
             </div>
     )
 }
-)
-export default UserProfileDropdown;
+
+// const UserProfileDropdown = withLoading(UserWidget);I
+export default UserWidget;

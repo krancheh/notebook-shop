@@ -1,0 +1,89 @@
+@use "/src/index.scss";
+$red: #e05858;
+$bg-red: #ffebeb;
+
+.item {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    position: relative;
+
+    border-radius: index.$base-border-radius;
+
+    &:hover {
+        background-color: #f7f7f7;
+
+        button {
+            display: flex;
+        }
+    }
+
+    .itemContent {
+        display: grid;
+        gap: 5px;
+
+        grid-template: {
+            columns: 80px auto;
+            rows: 20px;
+            areas:
+                "img info"
+                "img type"
+                "img price"
+        }
+
+    }
+
+
+    .picture {
+        margin: auto 0;
+        grid-area: img;
+        width: 100%;
+
+        img {
+            width: inherit;
+        }
+    }
+
+    .info {
+        grid-area: info;
+        font-size: 16px;
+    }
+
+    .type {
+        grid-area: type;
+        font-size: 14px;
+        color: #979797;
+    }
+
+    .price {
+        grid-area: price;
+    }
+
+    button {
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        right: 5px;
+
+        background-color: #ffffff;
+
+        svg {
+            height: 15px;
+            width: 15px;
+        }
+
+        &:hover {
+            background-color: $bg-red;
+
+            svg {
+                color: $red;
+            }
+        }
+    }
+}

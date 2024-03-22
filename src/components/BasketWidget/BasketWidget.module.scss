@@ -1,0 +1,51 @@
+@use "/src/index.scss";
+
+.widget {
+    position: relative;
+
+    .openButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+
+
+        color: index.$base-color;
+        font-weight: 600;
+
+        svg {
+            height: 20px;
+            width: 20px;
+            margin: auto 0;
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 400px;
+
+        @media (max-width: 800px) {
+            min-width: unset;
+            width: 70vw;
+        }
+
+        .items {
+            max-height: 70vh;
+            width: 100%;
+            overflow-y: auto;
+        }
+    }
+
+    .basketButtons {
+        display: flex;
+        gap: 10px;
+
+        button,
+        a {
+            flex: 1;
+        }
+    }
+
+}

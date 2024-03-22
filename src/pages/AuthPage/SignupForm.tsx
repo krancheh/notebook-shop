@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import Button from '../../components/Common/Button/Button';
 import Input from '../../components/Common/Input/Input';
 import { SignupUserData } from '../../types';
+import withLoading from '../../components/Common/WithLoading/WithLoading';
 
-interface TProps {
+interface IProps {
     auth: (data: SignupUserData) => void;
     error: string;
     isLoading: boolean;
 }
 
-const SignupForm: React.FC<TProps> = ({ auth, error }) => {
+const SignupForm = (props: IProps) => {
+    const { auth, error, isLoading } = props;
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -95,19 +98,79 @@ const SignupForm: React.FC<TProps> = ({ auth, error }) => {
         auth({ email, firstName, lastName, password });
     }
 
+    const SubmitButton = withLoading(Button);
+
     return (
         <form className="auth-form" onSubmit={event => submitHandler(event)}>
             <h2>Регистрация</h2>
             <div className="name-inputs">
-                <Input id="firstName" value={firstName} setValue={setFirstName} onChange={() => setFirstNameError("")} onBlur={handleFirstName} autocomplete="given-name" type="text" required label="Имя" placeholder="Вася" errorMessage={firstNameError} />
-                <Input id="lastName" value={lastName} setValue={setLastName} onChange={() => setLastNameError("")} onBlur={handleLastName} autocomplete="family-name" required label="Фамилия" placeholder="Пупкин" errorMessage={lastNameError} />
+                <Input
+                    id="firstName"
+                    value={firstName}
+                    setValue={setFirstName}
+                    onChange={() => setFirstNameError("")}
+                    onBlur={handleFirstName}
+                    autocomplete="given-name"
+                    type="text"
+                    required
+                    label="Имя"
+                    placeholder="Вася"
+                    errorMessage={firstNameError}
+                />
+                <Input
+                    id="lastName"
+                    value={lastName}
+                    setValue={setLastName}
+                    onChange={() => setLastNameError("")}
+                    onBlur={handleLastName}
+                    autocomplete="family-name"
+                    required
+                    label="Фамилия"
+                    placeholder="Пупкин"
+                    errorMessage={lastNameError}
+                />
             </div>
-            <Input id="email" value={email} setValue={setEmail} onChange={() => setEmailError("")} onBlur={handleEmail} type='email' autocomplete="email" required label="Email" placeholder="vasya@gmail.com" errorMessage={emailError} />
-            <Input id="password" value={password} setValue={setPassword} onChange={() => setPasswordError("")} onBlur={handlePassword} type="password" autocomplete="new-password" label="Пароль" required placeholder="•••••••" errorMessage={passwordError} />
-            <Input id="retypePassword" value={retypedPassword} setValue={setRetypedPassword} onChange={() => setRetypePwdError("")} onBlur={handleRetypePassword} type="password" autocomplete="new-password" label="Повторите пароль" required placeholder="•••••••" errorMessage={retypePwdError} />
+            <Input
+                id="email"
+                value={email}
+                setValue={setEmail}
+                onChange={() => setEmailError("")}
+                onBlur={handleEmail}
+                type='email'
+                autocomplete="email"
+                required
+                label="Email"
+                placeholder="vasya@gmail.com"
+                errorMessage={emailError}
+            />
+            <Input
+                id="password"
+                value={password}
+                setValue={setPassword}
+                onChange={() => setPasswordError("")}
+                onBlur={handlePassword}
+                type="password"
+                autocomplete="new-password"
+                label="Пароль"
+                required
+                placeholder="•••••••"
+                errorMessage={passwordError}
+            />
+            <Input
+                id="retypePassword"
+                value={retypedPassword}
+                setValue={setRetypedPassword}
+                onChange={() => setRetypePwdError("")}
+                onBlur={handleRetypePassword}
+                type="password"
+                autocomplete="new-password"
+                label="Повторите пароль"
+                required placeholder="•••••••"
+                errorMessage={retypePwdError}
+            />
             {error ? <span className="form-error-message">{error}</span> : null}
             <span style={{ margin: "0 0 -20px 0" }}>Уже есть учетная запись? <Link to="/login">Войти</Link></span>
-            <Button type="main" submit disabled={isSubmitDisabled}>Отправить</Button>
+            <SubmitButton type="main" submit disabled={isSubmitDisabled} isLoading={isLoading}>Отправить</SubmitButton>
         </form>
     );
 };

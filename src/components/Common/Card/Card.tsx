@@ -3,13 +3,14 @@ import styles from "./Card.module.scss";
 
 interface IProps {
     children: ReactNode[] | ReactNode;
+    className?: string;
 }
 
 const Card = (props: IProps) => {
-    const { children } = props;
+    const { children, className } = props;
 
     return (
-        <div className={styles.card}>{children}</div>
+        <div className={styles.card + ` ${className}`}>{children}</div>
     )
 }
 export default Card

@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import { LoginUserData } from '../../types';
 import Input from '../../components/Common/Input/Input';
 import Button from '../../components/Common/Button/Button';
+import withLoading from '../../components/Common/WithLoading/WithLoading';
 
-interface TProps {
+interface IProps {
     auth: (data: LoginUserData) => void;
     error: string;
     isLoading: boolean;
 }
 
-const LoginForm: React.FC<TProps> = ({ auth, error }) => {
+const LoginForm = (props: IProps) => {
+    const { auth, error, isLoading } = props;
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [remember, setRemember] = useState(false);
 
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
@@ -64,18 +66,48 @@ const LoginForm: React.FC<TProps> = ({ auth, error }) => {
         auth(data);
     }
 
+
+    const SubmitButton = withLoading(Button);
+
+
     return (
         <form className="auth-form" onSubmit={submitHandler}>
             <h2>Авторизация</h2>
-            <Input id="email" value={email} setValue={setEmail} onChange={() => setEmailError("")} onBlur={handleEmail} errorMessage={emailError} type='email' autocomplete="email" required label="Email" placeholder="vasya@gmail.com" />
-            <Input id="password" value={password} setValue={setPassword} onBlur={handlePassword} errorMessage={passwordError} type="password" autocomplete="current-password" label="Пароль" required placeholder="•••••••" />
+            <Input
+                id="email"
+                value={email}
+                setValue={setEmail}
+                onChange={() => setEmailError("")}
+                onBlur={handleEmail}
+                errorMessage={emailError}
+                type='email'
+                autocomplete="email"
+                required
+                label="Email"
+                placeholder="vasya@gmail.com"
+            />
+            <Input
+                id="password"
+                value={password}
+                setValue={setPassword}
+                onBlur={handlePassword}
+                errorMessage={passwordError}
+                type="password"
+                autocomplete="current-password"
+                label="Пароль"
+                required
+                placeholder="•••••••"
+            />
             <div className="checkbox">
-                <input id="remember" type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+                <input id="remember" type="checkbox" />
                 <label htmlFor="remember">Запомнить</label>
             </div>
             {error ? <span className="form-error-message">{error}</span> : null}
-            <span style={{ margin: "0 0 -20px 0" }}>Ещё нет учетной записи? <Link to="/signup">Зарегистрироваться</Link></span>
-            <Button type="main" submit disabled={isSubmitDisabled}>Отправить</Button>
+            <span style={{ margin: "0 0 -20px 0" }}>
+                Ещё нет учетной записи?
+                <Link to="/signup">Зарегистрироваться</Link>
+            </span>
+            <SubmitButton type="main" submit disabled={isSubmitDisabled} isLoading={isLoading}>Отправить</SubmitButton>
         </form>
     );
 };

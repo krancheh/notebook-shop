@@ -3,8 +3,14 @@ $base-color: #708EF8;
 $common-black: #101913;
 $common-grey: #535A56;
 $shadow: 0 1px 2px 0 #00000029;
+$base-border-radius: 8px;
 
+@mixin card {
+  box-shadow: $shadow;
+  border-radius: $base-border-radius;
 
+  background-color: #fff;
+}
 
 b {
   font-weight: bold;
@@ -31,6 +37,9 @@ body {
 
 main {
   padding-top: 80px;
+  min-height: 100vh;
+
+  background-color: #fafafa;
 }
 
 a {
@@ -45,6 +54,11 @@ a {
 
 p {
   color: $common-grey;
+  font-size: 18px;
+
+  @media (max-width: 800px) {
+    font-size: 16px;
+  }
 }
 
 h1,
@@ -57,7 +71,7 @@ h1 {
   font-size: 32px;
 
   @media (max-width: 800px) {
-    font-size: 27px;
+    font-size: 24px;
   }
 }
 

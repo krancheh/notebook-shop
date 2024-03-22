@@ -4,6 +4,9 @@ import Button from "../Common/Button/Button";
 import Card from "../Common/Card/Card";
 import Tag from "../Common/Tag/Tag";
 import styles from "./Item.module.scss";
+import useAddToBasket from "../../hooks/useAddToBasket";
+import { useAppSelector } from "../../store";
+import { selectBasketItems } from "../../store/basketSlice";
 
 interface IProps {
     item: Item;
@@ -12,7 +15,10 @@ interface IProps {
 const Item = (props: IProps) => {
     const { item } = props;
     const formattedPrice = item.price;
-    const link = "/" + item.id;
+    const link = item.id.toString();
+    const basketItems = useAppSelector(selectBasketItems);
+
+    const { addToBasket, isLoading } = useAddToBasket();
 
     return (
         <Card>
@@ -23,7 +29,12 @@ const Item = (props: IProps) => {
                 <Link to={link} className={styles.title}>{item.type?.name} {item.brand?.name} {item.name}</Link>
                 <div className={styles.price}>
                     <p>{formattedPrice} ₽</p>
-                    <Button type="main">Купить</Button>
+                    {
+                        basketItems.some(basketItem => basketItem.id === item.id)
+                            ? <Button path="/basket">В корзину</Button>
+                            : <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
+                    }
+
                 </div>
                 <div className={styles.tags}>
                     <Tag>В офис</Tag>

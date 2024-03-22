@@ -5,6 +5,7 @@ import { Item } from "../../types";
 import withLoading from "../../components/Common/WithLoading/WithLoading";
 import Card from "../../components/Common/Card/Card";
 import Button from "../../components/Common/Button/Button";
+import useAddToBasket from "../../hooks/useAddToBasket";
 
 
 interface ItemProps {
@@ -14,6 +15,7 @@ interface ItemProps {
 
 const Item = withLoading<ItemProps>((props: ItemProps) => {
     const { item } = props;
+    const { addToBasket, isLoading } = useAddToBasket();
 
     return (
         item
@@ -29,7 +31,7 @@ const Item = withLoading<ItemProps>((props: ItemProps) => {
                             item.info.length
                                 ? <ul className={styles.list}>
                                     {item.info.map(info => (
-                                        <li key={info.id}><b>{info.title}: </b>{info.description}</li>
+                                        <li key={info.id}><b>{info.title}:</b>{info.description}</li>
                                     ))}
                                 </ul>
                                 : <p>Не указаны</p>
@@ -37,7 +39,7 @@ const Item = withLoading<ItemProps>((props: ItemProps) => {
                     </div>
                     <Card className={styles.price}>
                         <h2>{item.price} ₽</h2>
-                        <Button type="main">Купить</Button>
+                        <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
                     </Card>
                 </div>
 

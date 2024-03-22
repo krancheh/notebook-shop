@@ -24,11 +24,14 @@ const userSlice = createSlice({
     selectors: {
         selectUser: (state) => {
             return state.firstName;
+        },
+        selectAuthStatus: (state) => {
+            return state.isLoggedIn;
         }
     }
 })
 
 export const { setUser } = userSlice.actions;
-export const { selectUser } = userSlice.selectors;
+export const { selectUser, selectAuthStatus } = userSlice.selectors;
 
 export default userSlice.reducer;

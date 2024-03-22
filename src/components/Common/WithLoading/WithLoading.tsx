@@ -11,7 +11,7 @@ const withLoading = <P,>(WrappedComponent: React.ComponentType<P>) => {
         const { isLoading, ...restProps } = props;
 
         return (
-            isLoading ? <div style={{ width: "100%", height: "100%" }}><LoadingIcon /></div> : <WrappedComponent {...restProps as P} />
+            isLoading ? <div style={{ maxHeight: "100px", maxWidth: "100px", margin: "0 auto" }}><LoadingIcon height={"100%"} width={"100%"} /></div> : <WrappedComponent {...restProps as P} />
         )
     }
 
