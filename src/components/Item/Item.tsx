@@ -7,6 +7,7 @@ import styles from "./Item.module.scss";
 import useAddToBasket from "../../hooks/useAddToBasket";
 import { useAppSelector } from "../../store";
 import { selectBasketItems } from "../../store/basketSlice";
+import getFormattedPrice from "../../utils/getFormattedPrice";
 
 interface IProps {
     item: Item;
@@ -14,7 +15,7 @@ interface IProps {
 
 const Item = (props: IProps) => {
     const { item } = props;
-    const formattedPrice = item.price;
+    const formattedPrice = getFormattedPrice(item.price);
     const link = item.id.toString();
     const basketItems = useAppSelector(selectBasketItems);
 
