@@ -17,6 +17,7 @@ const useGetBasketItems = () => {
     useEffect(() => {
         const getBasketItems = async () => {
             if (!isLoggedIn) {
+                dispatch(setBasketItems([]))
                 return navigate("/login");
             }
 
@@ -45,7 +46,7 @@ const useGetBasketItems = () => {
         }
 
         getBasketItems();
-    }, [])
+    }, [isLoggedIn])
 
     return { isLoading, error };
 }
