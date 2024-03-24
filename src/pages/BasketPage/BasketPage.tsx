@@ -5,8 +5,8 @@ import useGetBasketItems from "../../hooks/useGetBasketItems";
 import { useAppSelector } from "../../store";
 import { selectBasketItems } from "../../store/basketSlice";
 import styles from "./BasketPage.module.scss";
-import UpIcon from "../../assets/icons/arrow-up.svg";
 import { useEffect, useState } from "react";
+import getFormattedPrice from "../../utils/getFormattedPrice";
 
 
 const BasketPage = () => {
@@ -28,29 +28,18 @@ const BasketPage = () => {
                 <div className={styles.content}>
                     <h1>Корзина</h1>
                     <p>Всего в корзине: {basketItems.length}</p>
-                    {/* <Card>
-                        <label>
-                            <input type="checkbox" />
-                            Выбрать все
-                        </label>
-                    </Card> */}
                     <div className={styles.basket}>
                         {
                             basketItems.map(item => (
                                 <div key={item.id} className={styles.item}>
-                                    <div className={styles.count}>
-                                        <Button><UpIcon /></Button>
-                                        <span>{item.basketItemsIds.length}</span>
-                                        <Button><UpIcon className={styles.removeItemButton} /></Button>
-                                    </div>
-                                    <Item item={item} />
+                                    <Item item={item} isBasket />
                                 </div>
                             ))
                         }
                     </div>
                 </div>
-                <Card>
-                    <h2>Итого: {totalPrice}</h2>
+                <Card className={styles.actions}>
+                    <h2>Итого: {getFormattedPrice(totalPrice)} ₽</h2>
                     <Button type="main">Перейти к оплате</Button>
                     <Button>Очистить корзину</Button>
                 </Card>

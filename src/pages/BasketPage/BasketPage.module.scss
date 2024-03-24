@@ -12,22 +12,17 @@
             gap: 10px;
             justify-content: center;
             align-items: center;
-
-            .count {
-                text-align: center;
-
-                button {
-                    display: block;
-                }
-
-                .addItemButton {}
-
-                .removeItemButton {
-                    transform: rotateZ(180deg)
-                }
-            }
-
-
         }
+    }
+
+}
+
+.actions {
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-right: 10px;
     }
 }
