@@ -19,6 +19,10 @@ export default class UserService {
         return this.api.post("/login", data);
     }
 
+    static logout = async () => {
+        return this.api.post("/logout");
+    }
+
     static auth = async (): Promise<AxiosResponse<UserData>> => {
         return this.api.get("/auth");
     }
