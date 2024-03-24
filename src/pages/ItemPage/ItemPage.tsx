@@ -7,7 +7,7 @@ import Card from "../../components/Common/Card/Card";
 import Button from "../../components/Common/Button/Button";
 import useAddToBasket from "../../hooks/useAddToBasket";
 import getFormattedPrice from "../../utils/getFormattedPrice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 interface ItemProps {
