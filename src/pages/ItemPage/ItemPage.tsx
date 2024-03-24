@@ -6,6 +6,8 @@ import withLoading from "../../components/Common/WithLoading/WithLoading";
 import Card from "../../components/Common/Card/Card";
 import Button from "../../components/Common/Button/Button";
 import useAddToBasket from "../../hooks/useAddToBasket";
+import getFormattedPrice from "../../utils/getFormattedPrice";
+import { useEffect, useRef, useState } from "react";
 
 
 interface ItemProps {
@@ -16,6 +18,14 @@ interface ItemProps {
 const Item = withLoading<ItemProps>((props: ItemProps) => {
     const { item } = props;
     const { addToBasket, isLoading } = useAddToBasket();
+    const [formattedPrice, setFormattedPrice] = useState<string>("");
+
+    useEffect(() => {
+        if (item) {
+            const price = getFormattedPrice(item.price);
+            setFormattedPrice(price);
+        }
+    }, [item])
 
     return (
         item
@@ -38,7 +48,7 @@ const Item = withLoading<ItemProps>((props: ItemProps) => {
                         }
                     </div>
                     <Card className={styles.price}>
-                        <h2>{item.price} ₽</h2>
+                        <h2>{formattedPrice} ₽</h2>
                         <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
                     </Card>
                 </div>
@@ -52,8 +62,6 @@ const Item = withLoading<ItemProps>((props: ItemProps) => {
 const ItemPage = () => {
     const { id } = useParams();
     const { item, isLoading } = useGetItem(+id);
-    console.log(item);
-
 
     return (
         <div>

@@ -4,6 +4,7 @@ import styles from "./BasketItem.module.scss";
 import { Link } from "react-router-dom";
 import { BasketItemCounted } from "../../types";
 import useRemoveFromBasket from "../../hooks/useRemoveFromBasket";
+import getFormattedPrice from "../../utils/getFormattedPrice";
 
 interface IProps {
     item: BasketItemCounted;
@@ -12,6 +13,7 @@ interface IProps {
 const BasketItem = (props: IProps) => {
     const { item } = props;
     const { removeFromBasket } = useRemoveFromBasket();
+    const formattedPrice = getFormattedPrice(item.price);
 
     const handleRemoveItem = () => {
         removeFromBasket(item.basketItemsIds);
@@ -27,7 +29,7 @@ const BasketItem = (props: IProps) => {
                 </Link>
                 <Link to={`catalog/${item.id}`} className={styles.info}>{item.brand.name} {item.name}</Link>
                 <span className={styles.type}>{item.type.name}</span>
-                <p className={styles.price}>{item.price} ₽</p>
+                <p className={styles.price}>{formattedPrice} ₽</p>
             </div>
             <div title="Удалить из корзины">
                 <Button onClick={handleRemoveItem}><BasketRemoveIcon /></Button>
