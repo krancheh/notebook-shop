@@ -8,18 +8,22 @@ import useAddToBasket from "../../hooks/useAddToBasket";
 import { useAppSelector } from "../../store";
 import { selectBasketItems } from "../../store/basketSlice";
 import getFormattedPrice from "../../utils/getFormattedPrice";
+import useRemoveFromBasket from "../../hooks/useRemoveFromBasket";
 
 interface IProps {
     item: Item;
+    isBasket?: boolean;
 }
 
 const Item = (props: IProps) => {
-    const { item } = props;
+    const { item, isBasket = false } = props;
     const formattedPrice = getFormattedPrice(item.price);
-    const link = item.id.toString();
+    const link = "/catalog/" + item.id.toString();
     const basketItems = useAppSelector(selectBasketItems);
+    const basketItem = basketItems.find(basketItem => basketItem.id === item.id);
 
     const { addToBasket, isLoading } = useAddToBasket();
+    const { removeFromBasket } = useRemoveFromBasket();
 
     return (
         <Card className={styles.card}>
@@ -31,9 +35,19 @@ const Item = (props: IProps) => {
                 <div className={styles.price}>
                     <p>{formattedPrice} ₽</p>
                     {
-                        basketItems.some(basketItem => basketItem.id === item.id)
-                            ? <Button path="/basket">В корзине</Button>
-                            : <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
+                        isBasket
+                        && <div className={styles.count}>
+                            <Button type="text" onClick={() => removeFromBasket(basketItem.basketItemsIds.slice(0, 1))}>-</Button>
+                            <span>{basketItem.basketItemsIds.length}</span>
+                            <Button type="text" onClick={() => addToBasket(item)}>+</Button>
+                        </div>
+                    }
+                    {
+                        isBasket
+                            ? <Button onClick={() => removeFromBasket(basketItem.basketItemsIds)}>Удалить</Button>
+                            : basketItems.some(basketItem => basketItem.id === item.id)
+                                ? <Button path="/basket">В корзине</Button>
+                                : <Button type="main" onClick={() => addToBasket(item)} isLoading={isLoading}>Купить</Button>
                     }
 
                 </div>
