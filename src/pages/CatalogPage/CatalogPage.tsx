@@ -5,6 +5,7 @@ import ItemsList from "../../components/ItemsList/ItemsList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import styles from "./CatalogPage.module.scss";
 import useGetItems from "../../hooks/useGetItems";
+import Pagination from "../../components/Common/Pagination/Pagination";
 
 
 const ShopPage = () => {
@@ -26,7 +27,7 @@ const ShopPage = () => {
                         <Button>Выберите фильтр</Button>
                     </Card>
                     <ItemsList isLoading={isLoading} items={items} />
-
+                    <Pagination page={1} totalPages={10} />
                 </div>
             </div>
         </div>

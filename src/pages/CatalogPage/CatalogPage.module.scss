@@ -17,6 +17,7 @@
         grid-template-areas:
             "searchbar searchbar ."
             "filter list list"
+            "paging paging paging"
         ;
 
         @media (max-width: 1000px) {
