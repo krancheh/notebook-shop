@@ -13,7 +13,9 @@ const useGetItems = (params?: GetItemsParams) => {
             try {
                 setIsLoading(true);
                 const { data } = await ProductsService.getProducts<{ items: Item[] }>(params);
-                setItems(data.items);
+                if (Array.isArray(data.items)) {
+                    setItems(data.items);
+                }
             } catch (e) {
                 console.log(e);
             } finally {
