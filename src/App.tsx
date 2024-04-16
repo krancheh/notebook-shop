@@ -27,6 +27,7 @@ const App = () => {
             console.log(e);
             return null;
         }
+        return null;
     };
 
     const router = createBrowserRouter(createRoutesFromElements(
